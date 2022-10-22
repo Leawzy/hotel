@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin</title>
+    <title>Clients</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <link href="/public/css/app.css" rel="stylesheet">
@@ -29,12 +29,7 @@
                 <a href="#"
                    class="text-gray-100 flex items-center mt-4 py-2 px-6">
 
-                    <span class="mx-3">Пользователи</span>
-                </a>
-                <a href="#"
-                   class="text-gray-100 flex items-center mt-4 py-2 px-6">
-
-                    <span class="mx-3">Админ пользователи</span>
+                    <span class="mx-3">Clients</span>
                 </a>
             </nav>
         </div>
@@ -66,16 +61,58 @@
                              class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
                              style="display: none;">
                             <a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Выйти</a>
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Выйти</a>
                         </div>
                     </div>
                 </div>
             </header>
 
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-                <?php
+                <div class="container mx-auto px-6 py-8">
+                    <h3 class="text-gray-700 text-3xl font-medium">Clients</h3>
 
-                ?>
+                    <div class="mt-8">
+                        <a href="create.php" class="text-indigo-600 hover:text-indigo-900">Add</a>
+                    </div>
+
+                    <div class="flex flex-col mt-8">
+                        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                            <div
+                                class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                                <table class="min-w-full">
+                                    <thead>
+                                    <tr>
+                                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                            Name clients</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-white">
+                                    <?php
+                                    require_once '../db/db.php';
+                                    $check_client = mysqli_query($db, "SELECT * FROM `clients`");
+                                    $clients = mysqli_fetch_all($check_client);
+                                    foreach($clients as $client) {
+                                        ?>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                <div class="text-sm leading-5 text-gray-900"><?=$client[1]?></div>
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                                                <a href="update.php?id=<?=$client[0]?>" class="text-indigo-600 hover:text-indigo-900">Edit</a><br>
+                                                <a href="../db/delete.php?id=<?=$client[0]?>" class="text-red-600 hover:text-red-900">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>

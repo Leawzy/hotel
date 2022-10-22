@@ -9,42 +9,42 @@
     <title>Hotel | SQL</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-400">
 <section class="container xl:mx-auto pt-5">
     <?php
     require_once '../db/db.php';
     $check_client = mysqli_query($db, "SELECT * FROM `clients`");
     $clients = mysqli_fetch_all($check_client);
     ?>
-    <table>
+    <table class="border-separate border border-slate-500">
         <tr>
-            <th>ID_Clients</th>
-            <th>Full Name</th>
-            <th>Passport Data</th>
-            <th>Check In Date</th>
-            <th>Check Out Date</th>
-            <th>ID_Room</th>
-            <th>ID_Service1</th>
-            <th>ID_Service2</th>
-            <th>ID_Service3</th>
-            <th>Price</th>
-            <th>ID_Employees</th>
+            <th class="border border-slate-600">ID_Clients</th>
+            <th class="border border-slate-600">Full Name</th>
+            <th class="border border-slate-600">Passport Data</th>
+            <th class="border border-slate-600">Check In Date</th>
+            <th class="border border-slate-600">Check Out Date</th>
+            <th class="border border-slate-600">ID_Room</th>
+            <th class="border border-slate-600">ID_Service1</th>
+            <th class="border border-slate-600">ID_Service2</th>
+            <th class="border border-slate-600">ID_Service3</th>
+            <th class="border border-slate-600">Price</th>
+            <th class="border border-slate-600">ID_Employees</th>
         </tr>
         <?php
         foreach ($clients as $client) {
             ?>
             <tr>
-                <td><?=$client[0]?></td>
-                <td><?=$client[1]?></td>
-                <td><?=$client[2]?></td>
-                <td><?=$client[3]?></td>
-                <td><?=$client[4]?></td>
-                <td><?=$client[5]?></td>
-                <td><?=$client[6]?></td>
-                <td><?=$client[7]?></td>
-                <td><?=$client[8]?></td>
-                <td><?=$client[9]?></td>
-                <td><?=$client[10]?></td>
+                <td class="border border-slate-700"><?=$client[0]?></td>
+                <td class="border border-slate-700"><?=$client[1]?></td>
+                <td class="border border-slate-700"><?=$client[2]?></td>
+                <td class="border border-slate-700"><?=$client[3]?></td>
+                <td class="border border-slate-700"><?=$client[4]?></td>
+                <td class="border border-slate-700"><?=$client[5]?></td>
+                <td class="border border-slate-700"><?=$client[6]?></td>
+                <td class="border border-slate-700"><?=$client[7]?></td>
+                <td class="border border-slate-700"><?=$client[8]?></td>
+                <td class="border border-slate-700"><?=$client[9]?></td>
+                <td class="border border-slate-700"><?=$client[10]?></td>
             </tr>
             <?php
         }
